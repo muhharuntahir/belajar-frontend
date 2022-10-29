@@ -6,6 +6,64 @@
 </head>
 <body>
 <script>
+    class Vehicle{
+        constructor(licencePlate,manufacture) {
+            this.licencePlate = licencePlate;
+            this.manufacture = manufacture;
+            this.engineActive = false;
+        }
+
+        startEngines(){
+            console.log(`Mesin kendaraan ${this.licencePlate} dinyalakan`);
+            this.engineActive = true;
+        }
+
+        info(){
+            console.log(`Nomor Kendaraan: ${this.licensePlate}`);
+            console.log(`Manufacture: ${this.manufacture}`);
+            console.log(`Mesin: ${this.engineActive ? 'Active' : 'Inactive'}`);
+        }
+
+        parking(){
+            console.log(`Kendaraan ${this.licencePlate} parkir`);
+        }
+    }
+
+    class LandVehicle extends Vehicle{
+        constructor(licensePlate, manufacture, weels) {
+            super(licensePlate, manufacture);
+            this.weels = weels;
+        }
+
+        droveOff(){
+            console.log(`Kendaraan ${this.licencePlate} meninggalkan lokasi`);
+        }
+    }
+
+    class Car extends LandVehicle{
+        constructor(licensePlate, manufacture, weels) {
+            super(licensePlate, manufacture, weels);
+        }
+
+        openDoor(){
+            console.log(`Kendaraan ${this.licencePlate} membuka pintu`)
+        }
+    }
+
+    class VehicleFactory {
+        static repair(vehicles){
+            vehicles.forEach(vehicle =>{
+                console.log(`Kendaraan ${vehicle.licencePlate} sedang melakukan perawatan`);
+            })
+        }
+    }
+
+    const harunCar = new Car('H4R0N3', 'Honda', 4);
+    const dithaCar = new Car('D1TH4', 'Toyota', 4);
+    const hafizahCar = new Car('H4F1Z4H', 'BMW', 4);
+
+    VehicleFactory.repair([harunCar,dithaCar,hafizahCar]);
+
 
 </script>
 </body>
